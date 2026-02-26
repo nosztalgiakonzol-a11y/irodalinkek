@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaszinó & Fogadóiroda Ajánlatok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: rgba(20, 28, 50, 0.88);
+      --border: rgba(148, 163, 184, 0.28);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --accent-2: #818cf8;
+      --shadow: 0 20px 30px rgba(2, 6, 23, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(1200px 700px at 10% -10%, rgba(34, 211, 238, 0.2), transparent 60%),
+                  radial-gradient(1000px 650px at 100% 10%, rgba(129, 140, 248, 0.24), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 1rem auto 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.125rem);
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #dbeafe;
+      background: rgba(30, 41, 59, 0.45);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      background: linear-gradient(165deg, rgba(30, 41, 59, 0.92), var(--card));
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, 0.6);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.4);
+      margin-bottom: 0.85rem;
+      padding: 0.45rem;
+    }
+
+    .logo-wrap img {
+      max-width: 150px;
+      max-height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+    }
+
+    .logo-fallback {
+      font-weight: 700;
+      color: #c7d2fe;
+      letter-spacing: 0.02em;
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin: 0;
+    }
+
+    .meta {
+      margin-top: 0.45rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+      flex-grow: 1;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-weight: 700;
+      color: #04101e;
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      border-radius: 0.65rem;
+      padding: 0.7rem 0.9rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="badge">🎰 Válogatott kaszinó és sportfogadási oldalak</span>
+      <h1>Top fogadóirodák egy modern gyűjteményben</h1>
+      <p>
+        Az alábbi partnerekhez gyorsan eljuthatsz az affiliate linkekkel. Böngészd át a legismertebb irodákat,
+        hasonlítsd össze az ajánlatokat, és kattints arra, amelyik számodra a legjobb.
+      </p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/maxbet.rs" alt="Maxbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>MAXBET</span>'"></div>
+          <h2 class="name">Maxbet</h2>
+          <p class="meta">Sportfogadás és kaszinó kínálat, gyors regisztrációs lehetőséggel.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/maxbet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/mozzartbet.com" alt="Mozzartbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>MOZZARTBET</span>'"></div>
+          <h2 class="name">Mozzartbet</h2>
+          <p class="meta">Népszerű régiós iroda változatos fogadási piacokkal.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/mozzartbet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/admiralbet.rs" alt="AdmiralBet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>ADMIRALBET</span>'"></div>
+          <h2 class="name">AdmiralBet</h2>
+          <p class="meta">Klasszikus fogadóiroda modern élő fogadási funkciókkal.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/admiralbet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/meridianbet.com" alt="Meridian logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>MERIDIAN</span>'"></div>
+          <h2 class="name">Meridian</h2>
+          <p class="meta">Nemzetközi kínálat és rendszeres promóciók egy helyen.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/meridian" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/superbet.ro" alt="Superbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>SUPERBET</span>'"></div>
+          <h2 class="name">Superbet</h2>
+          <p class="meta">Egyszerűen kezelhető felület és széles sportkínálat.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/superbet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/rabona.com" alt="Rabona logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>RABONA</span>'"></div>
+          <h2 class="name">Rabona</h2>
+          <p class="meta">Fókuszban a sport és az e-sport, gyors befizetési opciókkal.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/rabona" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/megapari.com" alt="Megapari logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>MEGAPARI</span>'"></div>
+          <h2 class="name">Megapari</h2>
+          <p class="meta">Nagy odds-választék, több sportág és kaszinó opciók.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/megapari" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/frumzi.com" alt="Frumzi logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>FRUMZI</span>'"></div>
+          <h2 class="name">Frumzi</h2>
+          <p class="meta">Modern dizájn és mobilbarát élmény sportfogadóknak.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/frumzi" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/20bet.com" alt="20bet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>20BET</span>'"></div>
+          <h2 class="name">20bet</h2>
+          <p class="meta">Kiemelt oddsok és kaszinó játékok egy platformon.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/20bet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="logo-wrap"><img src="https://logo.clearbit.com/mostbet.com" alt="Mostbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-fallback\'>MOSTBET</span>'"></div>
+          <h2 class="name">Mostbet</h2>
+          <p class="meta">Nemzetközi felhasználók körében kedvelt fogadási oldal.</p>
+        </div>
+        <a class="btn" href="https://example.com/aff/mostbet" target="_blank" rel="noopener sponsored">Megnyitás</a>
+      </article>
+    </section>
+
+    <footer>
+      Figyelem: az itt található linkek affiliate jellegűek lehetnek. Csak 18 éven felülieknek,
+      felelősségteljes játék mellett.
+    </footer>
+  </main>
+</body>
+</html>

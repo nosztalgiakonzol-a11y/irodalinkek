@@ -76,6 +76,23 @@
       gap: 0.7rem;
     }
 
+    .top-note {
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(55, 239, 128, 0.35);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(13, 22, 34, 0.95), rgba(9, 15, 24, 0.95));
+      padding: 0.75rem 0.9rem;
+      color: #d8ffe8;
+      font-weight: 700;
+      line-height: 1.45;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .top-note strong {
+      color: #9effc4;
+      font-weight: 800;
+    }
+
     .card {
       display: grid;
       grid-template-columns: 56px 160px 1fr auto;
@@ -157,6 +174,10 @@
 </head>
 <body>
   <main class="container">
+    <section class="top-note" aria-label="Arbitrázs fogadási irodák információ">
+      Ezek az irodák amiket használunk az arbitrázs fogadáshoz, és <strong>megbízhatóak</strong>.
+    </section>
+
     <section class="list" aria-label="Irodák listája">
       <article class="card"><div class="rank">1</div><div class="logo-box"><img src="logos/maxbet.svg" alt="Maxbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MAXBET</span>'"></div><div class="info"><h2 class="name">Maxbet</h2><div class="rating">★★★★★</div></div><a class="cta" href="https://example.com/aff/maxbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
       <article class="card"><div class="rank">2</div><div class="logo-box"><img src="logos/mozzartbet.svg" alt="Mozzartbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOZZARTBET</span>'"></div><div class="info"><h2 class="name">Mozzartbet</h2><div class="rating">★★★★★</div></div><a class="cta" href="https://example.com/aff/mozzartbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>

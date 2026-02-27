@@ -14,6 +14,7 @@
       --text: #f1f5ff;
       --green: #37ef80;
       --green-2: #19b365;
+      --badge: #e81f49;
     }
 
     * { box-sizing: border-box; }
@@ -38,8 +39,9 @@
 
     body::before {
       background:
-        radial-gradient(46% 30% at 90% 10%, rgba(55, 239, 128, 0.2), transparent 70%),
-        radial-gradient(34% 24% at 10% 0%, rgba(38, 132, 255, 0.13), transparent 75%),
+        radial-gradient(46% 30% at 90% 10%, rgba(55, 239, 128, 0.24), transparent 70%),
+        radial-gradient(34% 24% at 10% 0%, rgba(38, 132, 255, 0.16), transparent 75%),
+        radial-gradient(28% 22% at 50% 95%, rgba(232, 31, 73, 0.08), transparent 78%),
         linear-gradient(165deg, #070a11 0%, #0a1019 55%, #080b12 100%);
       animation: drift-bg 85s linear infinite alternate;
     }
@@ -94,7 +96,7 @@
 
     .card {
       display: grid;
-      grid-template-columns: 160px 1fr auto;
+      grid-template-columns: 52px 160px 1fr auto;
       gap: 0.65rem;
       align-items: center;
       border: 1px solid var(--line);
@@ -103,6 +105,28 @@
       background:
         radial-gradient(45% 100% at 100% 50%, rgba(55, 239, 128, 0.13), transparent 70%),
         linear-gradient(140deg, rgba(12, 20, 32, 0.97), rgba(10, 16, 26, 0.97));
+    }
+
+
+    .rank {
+      text-align: center;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-left: 0.45rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      background: var(--badge);
+      color: #fff;
+      padding: 0.24rem 0.5rem;
+      border-radius: 8px;
+      letter-spacing: 0.01em;
+      vertical-align: middle;
     }
 
     .logo-box {
@@ -149,10 +173,11 @@
 
     @media (max-width: 760px) {
       .card {
-        grid-template-columns: 1fr;
+        grid-template-columns: 40px 1fr;
         gap: 0.5rem;
       }
-      .cta { width: 100%; text-align: center; }
+      .name { grid-column: 2; }
+      .cta { grid-column: 2; width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -163,16 +188,16 @@
     </section>
 
     <section class="list" aria-label="Irodák listája">
-      <article class="card"><div class="logo-box"><img src="logos/maxbet.svg" alt="Maxbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MAXBET</span>'"></div><h2 class="name">maxbet</h2><a class="cta" href="https://example.com/aff/maxbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/mozzartbet.svg" alt="Mozzartbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOZZARTBET</span>'"></div><h2 class="name">mozzartbet</h2><a class="cta" href="https://example.com/aff/mozzartbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/admiralbet.svg" alt="AdmiralBet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>ADMIRALBET</span>'"></div><h2 class="name">admiralbet</h2><a class="cta" href="https://example.com/aff/admiralbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/meridian.svg" alt="Meridian logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MERIDIAN</span>'"></div><h2 class="name">meridian</h2><a class="cta" href="https://example.com/aff/meridian" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/superbet.svg" alt="Superbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>SUPERBET</span>'"></div><h2 class="name">superbet</h2><a class="cta" href="https://example.com/aff/superbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/rabona.svg" alt="Rabona logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>RABONA</span>'"></div><h2 class="name">rabona</h2><a class="cta" href="https://example.com/aff/rabona" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/megapari.svg" alt="Megapari logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MEGAPARI</span>'"></div><h2 class="name">megapari</h2><a class="cta" href="https://example.com/aff/megapari" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/frumzi.svg" alt="Frumzi logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>FRUMZI</span>'"></div><h2 class="name">frumzi</h2><a class="cta" href="https://example.com/aff/frumzi" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/20bet.svg" alt="20bet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>20BET</span>'"></div><h2 class="name">20bet</h2><a class="cta" href="https://example.com/aff/20bet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
-      <article class="card"><div class="logo-box"><img src="logos/mostbet.svg" alt="Mostbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOSTBET</span>'"></div><h2 class="name">mostbet</h2><a class="cta" href="https://example.com/aff/mostbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">1</div><div class="logo-box"><img src="logos/maxbet.svg" alt="Maxbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MAXBET</span>'"></div><h2 class="name">maxbet <span class="badge">NEW</span></h2><a class="cta" href="https://example.com/aff/maxbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">2</div><div class="logo-box"><img src="logos/mozzartbet.svg" alt="Mozzartbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOZZARTBET</span>'"></div><h2 class="name">mozzartbet</h2><a class="cta" href="https://example.com/aff/mozzartbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">3</div><div class="logo-box"><img src="logos/admiralbet.svg" alt="AdmiralBet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>ADMIRALBET</span>'"></div><h2 class="name">admiralbet <span class="badge">Use code</span></h2><a class="cta" href="https://example.com/aff/admiralbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">4</div><div class="logo-box"><img src="logos/meridian.svg" alt="Meridian logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MERIDIAN</span>'"></div><h2 class="name">meridian</h2><a class="cta" href="https://example.com/aff/meridian" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">5</div><div class="logo-box"><img src="logos/superbet.svg" alt="Superbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>SUPERBET</span>'"></div><h2 class="name">superbet</h2><a class="cta" href="https://example.com/aff/superbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">6</div><div class="logo-box"><img src="logos/rabona.svg" alt="Rabona logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>RABONA</span>'"></div><h2 class="name">rabona <span class="badge">NEW</span></h2><a class="cta" href="https://example.com/aff/rabona" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">7</div><div class="logo-box"><img src="logos/megapari.svg" alt="Megapari logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MEGAPARI</span>'"></div><h2 class="name">megapari</h2><a class="cta" href="https://example.com/aff/megapari" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">8</div><div class="logo-box"><img src="logos/frumzi.svg" alt="Frumzi logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>FRUMZI</span>'"></div><h2 class="name">frumzi</h2><a class="cta" href="https://example.com/aff/frumzi" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">9</div><div class="logo-box"><img src="logos/20bet.svg" alt="20bet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>20BET</span>'"></div><h2 class="name">20bet</h2><a class="cta" href="https://example.com/aff/20bet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
+      <article class="card"><div class="rank">10</div><div class="logo-box"><img src="logos/mostbet.svg" alt="Mostbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOSTBET</span>'"></div><h2 class="name">mostbet <span class="badge">Use code</span></h2><a class="cta" href="https://example.com/aff/mostbet" target="_blank" rel="noopener sponsored">Regisztráció</a></article>
     </section>
   </main>
 </body>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaszinó Ajánlatok | Top arbitrázs irodák</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b12;
+      --panel: #0f1723;
+      --line: #263650;
+      --text: #f1f5ff;
+      --muted: #9eabc3;
+      --green: #37ef80;
+      --green-2: #19b365;
+      --yellow: #ffd83a;
+      --badge: #e81f49;
+      --chip: #162231;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::before {
+      background:
+        radial-gradient(45% 30% at 88% 8%, rgba(55, 239, 128, 0.20), transparent 70%),
+        radial-gradient(35% 25% at 10% 0%, rgba(30, 126, 255, 0.12), transparent 75%),
+        linear-gradient(165deg, #070a11 0%, #0a1019 55%, #080b12 100%);
+      animation: drift-bg 85s linear infinite alternate;
+    }
+
+    body::after {
+      z-index: -1;
+      opacity: 0.3;
+      background:
+        radial-gradient(30% 24% at 75% 60%, rgba(55, 239, 128, 0.18), transparent 70%),
+        radial-gradient(26% 20% at 25% 50%, rgba(255, 216, 58, 0.07), transparent 75%);
+      filter: blur(18px);
+      animation: drift-overlay 95s linear infinite alternate;
+    }
+
+    @keyframes drift-bg {
+      0% { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+      100% { transform: translate3d(1.5%, 1.2%, 0) scale(1.03); }
+    }
+
+    @keyframes drift-overlay {
+      0% { transform: translate3d(1.5%, -1%, 0) scale(1); }
+      100% { transform: translate3d(-1.5%, 1%, 0) scale(1.04); }
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 1.1rem));
+      margin: 0 auto;
+      padding: 1rem 0 1.8rem;
+    }
+
+    .hero {
+      margin-bottom: 0.95rem;
+      border: 1px solid rgba(55, 239, 128, 0.28);
+      border-radius: 14px;
+      background: linear-gradient(150deg, rgba(13, 24, 37, 0.95), rgba(8, 14, 24, 0.95));
+      padding: 1rem;
+    }
+
+    .hero-top {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.55rem;
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid #2b3e5b;
+      color: #c8d7ee;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 0.28rem 0.56rem;
+      border-radius: 999px;
+    }
+
+    .chip.hot {
+      background: rgba(55, 239, 128, 0.13);
+      border-color: rgba(55, 239, 128, 0.32);
+      color: #d9ffe8;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.15rem, 4vw, 2rem);
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -0.015em;
+    }
+
+    .hero p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.9rem;
+    }
+
+    .offer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .offer-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px 190px minmax(180px, 1fr) 120px 122px 95px 130px;
+      gap: 0.65rem;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.8rem;
+      background:
+        radial-gradient(45% 100% at 100% 50%, rgba(55, 239, 128, 0.13), transparent 70%),
+        linear-gradient(140deg, rgba(12, 20, 32, 0.97), rgba(10, 16, 26, 0.97));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .offer-card.highlight {
+      border-color: rgba(55, 239, 128, 0.4);
+      box-shadow: 0 0 0 1px rgba(55, 239, 128, 0.24), 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .rank {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .badge {
+      position: absolute;
+      top: -9px;
+      left: 11px;
+      font-size: 0.67rem;
+      font-weight: 800;
+      background: var(--badge);
+      color: #fff;
+      padding: 0.26rem 0.58rem;
+      border-radius: 999px;
+      letter-spacing: 0.01em;
+    }
+
+    .logo-box {
+      height: 52px;
+      border-radius: 10px;
+      border: 1px solid #2a3b52;
+      background: #09111d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem;
+    }
+
+    .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    .fallback {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #d4def0;
+      letter-spacing: 0.04em;
+    }
+
+    .bonus {
+      font-size: 0.96rem;
+      font-weight: 800;
+      line-height: 1.28;
+    }
+
+    .bonus span {
+      display: block;
+      margin-top: 0.2rem;
+      color: #c8d4ea;
+      font-size: 0.79rem;
+      font-weight: 600;
+    }
+
+    .speed,
+    .review {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #d7e3f8;
+      text-align: center;
+    }
+
+    .rating {
+      color: var(--yellow);
+      letter-spacing: 0.08rem;
+      font-size: 1.1rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .review {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .cta {
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      color: #042710;
+      background: linear-gradient(110deg, var(--green), var(--green-2));
+      border-radius: 11px;
+      padding: 0.72rem 0.68rem;
+      box-shadow: 0 0 14px rgba(55, 239, 128, 0.35);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .notice {
+      margin-top: 0.95rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      border-left: 3px solid rgba(232, 31, 73, 0.72);
+      padding-left: 0.62rem;
+    }
+
+    @media (max-width: 1024px) {
+      .offer-card {
+        grid-template-columns: 50px 150px minmax(150px, 1fr) 96px 106px 75px 112px;
+        gap: 0.55rem;
+      }
+      .rating { font-size: 1rem; }
+      .bonus { font-size: 0.9rem; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(1160px, calc(100% - 0.7rem)); }
+      .hero { padding: 0.85rem; }
+      .hero p { font-size: 0.86rem; }
+
+      .offer-card {
+        grid-template-columns: 44px 1fr;
+        grid-template-areas:
+          "rank logo"
+          "rank bonus"
+          "rank meta"
+          "rank actions";
+        gap: 0.45rem 0.6rem;
+        padding: 0.72rem;
+      }
+
+      .rank { grid-area: rank; font-size: 1.6rem; align-self: start; padding-top: 0.3rem; }
+      .logo-box { grid-area: logo; height: 48px; }
+      .bonus { grid-area: bonus; font-size: 0.89rem; }
+
+      .speed,
+      .rating,
+      .review {
+        text-align: left;
+      }
+
+      .speed::before { content: "Kifizetés: "; color: #99a9c6; font-weight: 600; }
+      .review::before { content: "Részletek: "; color: #99a9c6; font-weight: 600; text-decoration: none; }
+
+      .meta-row {
+        grid-area: meta;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem 0.85rem;
+        align-items: center;
+      }
+
+      .actions {
+        grid-area: actions;
+        display: flex;
+      }
+
+      .cta {
+        width: 100%;
+        padding: 0.76rem 0.7rem;
+      }
+
+      .badge { top: -8px; left: 8px; font-size: 0.62rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-top">
+        <span class="chip hot">Top arbitrázs irodák</span>
+        <span class="chip">Gamingland inspirált stílus</span>
+        <span class="chip">18+</span>
+      </div>
+      <h1>Top irodák arbitrázs fogadáshoz – mobilbarát rubrikás ajánló</h1>
+      <p>
+        Minden iroda külön blokkban jelenik meg. Mobilon rendezettebb, könnyebben olvasható elrendezést kapsz,
+        a gombok pedig mostantól „Regisztráció” szöveggel jelennek meg.
+      </p>
+    </section>
+
+    <section class="offer-list" aria-label="Kiemelt irodák külön rubrikákban">
+      <article class="offer-card highlight">
+        <span class="badge">NEW</span>
+        <div class="rank">1</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/maxbet.rs" alt="Maxbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MAXBET</span>'"></div>
+        <div class="bonus">Arbitrázsra optimalizált piacok<span>gyors odds-frissítéssel</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★★</div><a class="review" href="https://example.com/review/maxbet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/maxbet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">2</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/mozzartbet.com" alt="Mozzartbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOZZARTBET</span>'"></div>
+        <div class="bonus">Top választás surebet stratégiához<span>stabil élő és pre-match kínálattal</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★★</div><a class="review" href="https://example.com/review/mozzartbet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/mozzartbet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">3</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/admiralbet.rs" alt="AdmiralBet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>ADMIRALBET</span>'"></div>
+        <div class="bonus">Magas piacmélység arbitrázshoz<span>jó likviditású eseményekkel</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/admiralbet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/admiralbet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <span class="badge">CODE: START</span>
+        <div class="rank">4</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/meridianbet.com" alt="Meridian logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MERIDIAN</span>'"></div>
+        <div class="bonus">Gyors vonalmozgás-követéshez<span>megbízható odds update</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★★</div><a class="review" href="https://example.com/review/meridian" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/meridian" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">5</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/superbet.ro" alt="Superbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>SUPERBET</span>'"></div>
+        <div class="bonus">Erős alternatíva arbitrázshoz<span>gyors számlaaktivitással</span></div>
+        <div class="meta-row"><div class="speed">1–3 nap</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/superbet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/superbet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">6</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/rabona.com" alt="Rabona logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>RABONA</span>'"></div>
+        <div class="bonus">Arbitrázs-barát piacstruktúra<span>gyors fogadáskezelés</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/rabona" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/rabona" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">7</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/megapari.com" alt="Megapari logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MEGAPARI</span>'"></div>
+        <div class="bonus">Széles sportkínálat surebethez<span>rugalmas odds vonalakkal</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/megapari" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/megapari" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">8</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/frumzi.com" alt="Frumzi logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>FRUMZI</span>'"></div>
+        <div class="bonus">Jó mobilos arbitrázs opció<span>gyors élő piacváltással</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/frumzi" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/frumzi" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">9</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/20bet.com" alt="20bet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>20BET</span>'"></div>
+        <div class="bonus">Kiegyensúlyozott irodai profil<span>arbitrázs monitoringhoz ideális</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/20bet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/20bet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+
+      <article class="offer-card">
+        <div class="rank">10</div>
+        <div class="logo-box"><img src="https://logo.clearbit.com/mostbet.com" alt="Mostbet logó" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback\'>MOSTBET</span>'"></div>
+        <div class="bonus">Arbitrázshoz is erős nemzetközi iroda<span>stabil kínálat és tempó</span></div>
+        <div class="meta-row"><div class="speed">Max 2 óra</div><div class="rating">★★★★☆</div><a class="review" href="https://example.com/review/mostbet" target="_blank" rel="noopener">Review</a></div>
+        <div class="actions"><a class="cta" href="https://example.com/aff/mostbet" target="_blank" rel="noopener sponsored">Regisztráció</a></div>
+      </article>
+    </section>
+
+    <p class="notice">Figyelem: a linkek affiliate jellegűek lehetnek. A lista tájékoztató jelleggel a top, arbitrázs fogadáshoz gyakran használt irodákat emeli ki. Csak 18+ és felelősségteljes játék.</p>
+  </main>
+</body>
+</html>

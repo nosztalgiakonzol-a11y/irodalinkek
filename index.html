@@ -83,9 +83,20 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
     }
 
-    .top-note strong {
-      color: #9effc4;
-      font-weight: 800;
+    .top-note p {
+      margin: 0;
+    }
+
+    .top-note p + ul {
+      margin-top: 0.45rem;
+    }
+
+    .top-note ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.2rem;
     }
 
     .list {
@@ -184,7 +195,15 @@
 <body>
   <main class="container">
     <section class="top-note" aria-label="Arbitrázs fogadási irodák információ">
-      Ezek az irodák amiket használunk az arbitrázs fogadáshoz, és <strong>megbízhatóak</strong>.
+      <p>Ezeket a fogadóirodákat használjuk napi szinten az arbitrázs fogadásokhoz.<br>
+      Nem ismeretlen oldalak, hanem nemzetközileg működő, engedéllyel rendelkező szolgáltatók.</p>
+      <ul>
+        <li>✔ Valódi működési háttér</li>
+        <li>✔ Több országban jelenlévő platformok</li>
+        <li>✔ Stabil be- és kifizetési rendszer</li>
+        <li>✔ A közösségünk által aktívan használt irodák</li>
+      </ul>
+      <p>Az itt szereplő oldalak az Arbitrázs rendszerrel kompatibilisek és teszteltek.</p>
     </section>
 
     <section class="list" aria-label="Irodák listája">
